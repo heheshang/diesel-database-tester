@@ -2,7 +2,15 @@
 name = "diesel-database-tester"
 version = "0.1.0"
 edition = "2021"
-
+authors = ["s Shang <ssk1820155@gmail.com>"]
+license = "MIT"
+documentation = "https://docs.rs/diesel-database-tester "
+repository = "https://github.com/heheshang/diesel-database-tester "
+homepage = "https://github.com/heheshang/diesel-database-tester"
+description = """ A simple tool to test diesel with postgres , It will automatically create a database and a table for testing. and drop the database after testing. """
+readme = "README.md"
+categories = ["development-tools"]
+keywords = ["diesel", "postgres", "database", "test"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
