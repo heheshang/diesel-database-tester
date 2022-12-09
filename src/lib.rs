@@ -88,6 +88,12 @@ impl TestDb {
     pub fn url(&self) -> String {
         format!("{}/{}", self.server_url(), self.dbname)
     }
+    pub fn pool(&self) -> Pool {
+        let manager = ConnectionManager::<PgConnection>::new(self.url());
+        r2d2::Pool::builder()
+            .build(manager)
+            .expect("Failed to create pool.")
+    }
 }
 pub fn establish_connection(url: &str) -> PgConnection {
     PgConnection::establish(url).unwrap_or_else(|_| panic!("Error connecting to {}", url))
