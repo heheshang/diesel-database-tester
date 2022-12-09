@@ -8,6 +8,7 @@ use diesel::{
 };
 use diesel_migrations::{embed_migrations, EmbeddedMigrations, MigrationHarness};
 
+use log::info;
 use tokio::runtime::Runtime;
 use uuid::Uuid;
 
@@ -101,6 +102,7 @@ pub fn establish_connection(url: &str) -> PgConnection {
 
 impl Drop for TestDb {
     fn drop(&mut self) {
+        info!("Dropping test database");
         let server_url = self.server_url();
         let db_name = self.dbname.clone();
         thread::spawn(move || {
@@ -119,6 +121,7 @@ impl Drop for TestDb {
         })
         .join()
         .expect("Failed to join thread");
+        info!("Dropped test database")
     }
 }
 
